@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "moduleResolution": "nodenext",
+    "lib": [
+      "DOM",
+      "ES2015.Core"
+    ],
+    "outDir": "../dist",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "strict": true
+  },
+  "include": [
+    "./src/**/*",
+    "index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "webpack.config.js",
+    "webpack.dev.config.js",
+    "webpack.prod.config.js"
+  ]
+}
