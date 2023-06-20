@@ -1,6 +1,6 @@
 import './css-editor.scss';
 import el from './css-editor.html';
-import { templateCreation } from '../../interfaces/template';
+import { templateCreation } from '../../helper/template';
 
 export const editor: ChildNode = templateCreation(el);
 

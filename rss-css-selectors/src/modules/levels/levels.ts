@@ -1,6 +1,6 @@
 import './levels.scss';
 import el from './levels.html';
-import { templateCreation } from '../../interfaces/template';
+import { templateCreation } from '../../helper/template';
 
 export const level: ChildNode = templateCreation(el);
 
