@@ -3,7 +3,7 @@ import './presentation.scss';
 import { templateCreation } from '../../helper/template';
 import { Table } from './table/table';
 
-export const presentation: ChildNode = templateCreation(el);
+// export const presentation: ChildNode = templateCreation(el);
 
 export class Presentation {
   public table: Table;

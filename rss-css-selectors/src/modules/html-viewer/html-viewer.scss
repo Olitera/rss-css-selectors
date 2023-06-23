@@ -1,5 +1,45 @@
-.block3 {
+.viewer {
   width: 50%;
   height: 700px;
   border: 2px solid #b6abab;
 }
+
+.viewer-title {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.viewer-main {
+  width: 100%;
+  height: 600px;
+  flex-direction: row;
+  justify-content: flex-start;
+  background: #201f1f;
+}
+
+.viewer-table {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer-table-linea {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.viewer-linea-number {
+  width: 10%;
+  height: 100%;
+  border-right: 1px solid #b6abab;
+  text-align: center;
+  color: #FFFFFF;
+}
+
