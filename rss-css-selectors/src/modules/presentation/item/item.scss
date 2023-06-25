@@ -23,3 +23,16 @@
   border-radius: 20px;
   background: orange;
 }
+
+//.plate, .bento, .orange {
+//  &:hover {
+//    border: 2px solid green;
+//  }
+//}
+
+.plate, .bento, .orange {
+  &:hover,
+  &.active {
+    border: 2px solid green;
+  }
+}

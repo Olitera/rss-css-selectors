@@ -5,6 +5,7 @@ import { Viewer } from './modules/html-viewer/html-viewer';
 import { Level } from './modules/levels/levels';
 import { Footer } from './modules/footer/footer';
 import { Item } from './modules/presentation/item/item';
+import { HtmlItem } from './modules/html-viewer/html-item/html-item';
 
 class Main {
   private input?: Element | null;
@@ -20,6 +21,13 @@ class Main {
   startLevel(number: number): void {
     this.presentation.renderTable(number);
     this.items = this.presentation.table?.itemsArray;
+    const htmlItemsArray = this.items?.map((element) => new HtmlItem(element));
+    const tags = htmlItemsArray?.map((el) => el.element);
+    if (this.tableCode && tags) {
+      this.tableCode.innerHTML = '';
+      this.tableCode.append(...tags);
+    }
+
     console.log(this.items);
   }
 

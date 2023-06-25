@@ -39,6 +39,14 @@
 
 .table-code {
   width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+}
+
+.table-code div {
+  height: 5%;
 }
 
 
