@@ -6,17 +6,23 @@ import { Table } from './table/table';
 // export const presentation: ChildNode = templateCreation(el);
 
 export class Presentation {
-  public table: Table;
+  public table?: Table;
   public element: HTMLElement;
-  level = 0;
+
+  // private level: number;
 
   constructor() {
+    // this.level = level;
     this.element = templateCreation(el) as HTMLElement;
-    this.table = new Table(this.level);
+  }
+
+  renderTable(level: number) {
+    this.element.innerHTML = '';
+    this.table = new Table(level);
     this.element.append(this.table.element);
   }
 
-  addStyle(): void {
-    this.element.style.background = 'red';
-  }
+  // addStyle(): void {
+  //   this.element.style.background = 'red';
+  // }
 }

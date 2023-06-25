@@ -2,13 +2,13 @@ import './css-editor.scss';
 import el from './css-editor.html';
 import { templateCreation } from '../../helper/template';
 
-// export const editor: ChildNode = templateCreation(el);
-
 export class Editor {
   public element: HTMLElement;
+  public input: Element | null;
 
   constructor() {
     this.element = templateCreation(el) as HTMLElement;
+    this.input = this.element.querySelector('.selector');
     this.renderCssEditor();
   }
 
@@ -19,7 +19,6 @@ export class Editor {
       const editorLinea: ChildNode = templateCreation(
         `<div class="editor-table-linea"><div class="table-linea-number">${i + 2}</div></div>`
       );
-      // console.log(editorLinea);
       tableCss?.append(editorLinea);
     }
   }

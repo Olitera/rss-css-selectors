@@ -1,6 +1,9 @@
 .level {
   width: 15%;
   height: 1020px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
   border: 2px solid #b6abab;
 }
 

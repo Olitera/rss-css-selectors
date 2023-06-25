@@ -12,7 +12,7 @@ export class Level {
     this.renderLevel();
   }
 
-  renderLevel() {
+  renderLevel(): void {
     const levelTitle = this.element.querySelector('.level-title');
     console.log(levelTitle);
     for (let i = 10; i > 0; i--) {

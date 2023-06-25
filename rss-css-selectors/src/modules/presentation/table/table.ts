@@ -8,6 +8,7 @@ export class Table {
   public item?: Item;
   public element!: HTMLElement;
   private level: number;
+  public itemsArray?: Item[];
 
   constructor(level: number) {
     this.level = level;
@@ -16,9 +17,10 @@ export class Table {
   }
 
   forceTable(): void {
-    levelsConfig[this.level].forEach((ele) => {
+    this.itemsArray = levelsConfig[this.level].map((ele) => {
       this.item = new Item(ele);
       this.element.append(this.item.element);
+      return this.item;
     });
   }
 }
