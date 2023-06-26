@@ -24,15 +24,15 @@
   background: orange;
 }
 
-//.plate, .bento, .orange {
-//  &:hover {
-//    border: 2px solid green;
-//  }
-//}
-
 .plate, .bento, .orange {
+  transform: translateY(0);
+  transition: ease-in-out 500ms;
   &:hover,
   &.active {
     border: 2px solid green;
+  }
+
+  &.fly-away {
+    transform: translateY(-100vh);
   }
 }

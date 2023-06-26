@@ -2,24 +2,24 @@ import el from './presentation.html';
 import './presentation.scss';
 import { templateCreation } from '../../helper/template';
 import { Table } from './table/table';
-
-// export const presentation: ChildNode = templateCreation(el);
+import { levelsConfig } from '../../levelsConfig/game';
 
 export class Presentation {
   public table?: Table;
   public element: HTMLElement;
-
-  // private level: number;
+  public description?: HTMLDivElement;
 
   constructor() {
-    // this.level = level;
     this.element = templateCreation(el) as HTMLElement;
+    // this.description = this.element.querySelector('.description');
   }
 
   renderTable(level: number) {
     this.element.innerHTML = '';
+    this.description = document.createElement('div');
+    this.description.innerText = levelsConfig[level].description;
     this.table = new Table(level);
-    this.element.append(this.table.element);
+    this.element.append(this.description, this.table.element);
   }
 
   // addStyle(): void {

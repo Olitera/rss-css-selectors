@@ -4,10 +4,12 @@ import { templateCreation } from '../../helper/template';
 
 export class Editor {
   public element: HTMLElement;
-  public input: Element | null;
+  public input: HTMLInputElement | null;
+  public form: HTMLFormElement | null;
 
   constructor() {
     this.element = templateCreation(el) as HTMLElement;
+    this.form = this.element.querySelector('form');
     this.input = this.element.querySelector('.selector');
     this.renderCssEditor();
   }

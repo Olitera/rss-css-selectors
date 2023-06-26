@@ -17,7 +17,7 @@ export class Table {
   }
 
   forceTable(): void {
-    this.itemsArray = levelsConfig[this.level].map((ele) => {
+    this.itemsArray = levelsConfig[this.level].level.map((ele) => {
       this.item = new Item(ele);
       this.element.append(this.item.element);
       return this.item;
