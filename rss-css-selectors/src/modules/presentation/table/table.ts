@@ -3,6 +3,7 @@ import el from './table.html';
 import { templateCreation } from '../../../helper/template';
 import { Item } from '../item/item';
 import { levelsConfig } from '../../../levelsConfig/game';
+import { IItemConfig } from '../../../interfaces/item-config';
 
 export class Table {
   public item?: Item;
@@ -17,10 +18,18 @@ export class Table {
   }
 
   forceTable(): void {
-    this.itemsArray = levelsConfig[this.level].level.map((ele) => {
-      this.item = new Item(ele);
-      this.element.append(this.item.element);
-      return this.item;
+    this.itemsArray = levelsConfig[this.level].level.map((elem: IItemConfig) => {
+      return this.createItem(elem);
     });
+  }
+
+  createItem(elem: IItemConfig) {
+    this.item = new Item(elem);
+    if (elem.child) {
+      this.item.child = new Item(elem.child);
+      (this.item.element as HTMLElement).append(this.item.child.element);
+    }
+    this.element.append(this.item.element);
+    return this.item;
   }
 }

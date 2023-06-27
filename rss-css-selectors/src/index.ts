@@ -25,7 +25,17 @@ class Main {
   startLevel(number: number): void {
     this.presentation.renderTable(number);
     this.items = this.presentation.table?.itemsArray;
-    const htmlItemsArray = this.items?.map((element) => new HtmlItem(element));
+    const htmlItemsArray = this.items?.map((element) => {
+      const htmlItemm = new HtmlItem(element);
+      if (element.child) {
+        const htmlItemChild = new HtmlItem(element.child);
+        htmlItemm.element?.append(htmlItemChild.element);
+        const endTag = document.createElement('span');
+        endTag.innerText = `</${element.className}>`;
+        htmlItemm.element?.append(endTag);
+      }
+      return htmlItemm;
+    });
     const tags = htmlItemsArray?.map((el) => el.element);
     if (this.tableCode && tags) {
       this.tableCode.innerHTML = '';

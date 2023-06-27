@@ -11,18 +11,14 @@ export class Presentation {
 
   constructor() {
     this.element = templateCreation(el) as HTMLElement;
-    // this.description = this.element.querySelector('.description');
   }
 
   renderTable(level: number) {
     this.element.innerHTML = '';
     this.description = document.createElement('div');
+    this.description.className = 'description';
     this.description.innerText = levelsConfig[level].description;
     this.table = new Table(level);
     this.element.append(this.description, this.table.element);
   }
-
-  // addStyle(): void {
-  //   this.element.style.background = 'red';
-  // }
 }

@@ -11,6 +11,10 @@
   background: aliceblue;
 }
 
+.plate-colorful {
+  border: 5px solid blue;
+}
+
 .bento {
   width: 70px;
   height: 70px;
@@ -24,7 +28,18 @@
   background: orange;
 }
 
-.plate, .bento, .orange {
+.apple {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: green;
+}
+
+.red {
+  background: red;
+}
+
+.plate, .bento, .orange, .apple {
   transform: translateY(0);
   transition: ease-in-out 500ms;
   &:hover,

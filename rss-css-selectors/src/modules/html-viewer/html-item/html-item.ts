@@ -12,12 +12,18 @@ export class HtmlItem {
     // this._itemConfig = itemConfig;
     this._item = item;
     this.element = templateCreation(el) as HTMLElement;
-    this.element.innerText = this.createTag();
+    this.createTag();
     this.element.addEventListener('mouseenter, mouseleave', this.addListener);
   }
 
-  createTag(): string {
-    return `<${this._item.className} />`;
+  createTag(): void {
+    if (this._item.child) {
+      const openTag = document.createElement('span');
+      openTag.innerText = `<${this._item.className}>`;
+      this.element.append(openTag);
+    } else {
+      this.element.innerText = `<${this._item.className} />`;
+    }
   }
 
   addListener = () => {
