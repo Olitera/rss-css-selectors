@@ -7,17 +7,25 @@
 .plate {
   width: 70px;
   height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   border-radius: 30px;
   background: aliceblue;
 }
 
-.plate-colorful {
+.colorful {
   border: 5px solid blue;
 }
 
 .bento {
   width: 70px;
   height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background: red;
 }
 
@@ -37,6 +45,10 @@
 
 .red {
   background: red;
+}
+
+.violet {
+  background: blueviolet;
 }
 
 .plate, .bento, .orange, .apple {

@@ -5,11 +5,9 @@ import { Item } from '../../presentation/item/item';
 
 export class HtmlItem {
   public element: HTMLElement;
-  // private _itemConfig: { className: string };
   private _item: Item;
 
   constructor(item: Item) {
-    // this._itemConfig = itemConfig;
     this._item = item;
     this.element = templateCreation(el) as HTMLElement;
     this.createTag();
@@ -17,12 +15,16 @@ export class HtmlItem {
   }
 
   createTag(): void {
+    const openTag = document.createElement('span');
+    let text = `<${this._item.tag}`;
+    if (this._item.className) {
+      text += ` class="${this._item.className}"`;
+    }
     if (this._item.child) {
-      const openTag = document.createElement('span');
-      openTag.innerText = `<${this._item.className}>`;
+      openTag.innerText = text + '>';
       this.element.append(openTag);
     } else {
-      this.element.innerText = `<${this._item.className} />`;
+      this.element.innerText = text + ' />';
     }
   }
 

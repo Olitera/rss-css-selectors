@@ -31,7 +31,7 @@ class Main {
         const htmlItemChild = new HtmlItem(element.child);
         htmlItemm.element?.append(htmlItemChild.element);
         const endTag = document.createElement('span');
-        endTag.innerText = `</${element.className}>`;
+        endTag.innerText = `</${element.tag}>`;
         htmlItemm.element?.append(endTag);
       }
       return htmlItemm;
@@ -42,7 +42,7 @@ class Main {
       this.tableCode.append(...tags);
     }
     if (this.input) {
-      this.input.pattern = levelsConfig[number].answear;
+      this.input.pattern = levelsConfig[number].answear.join('|');
     }
     console.log(this.items);
   }
@@ -63,7 +63,6 @@ class Main {
     this.tableCode = viewer.tableCode;
     const level: Level = new Level();
     const footer: Footer = new Footer();
-
     const body: HTMLBodyElement = document.querySelector('body') as HTMLBodyElement;
     body?.append(bodyContainer);
     body?.append(footer.element);
@@ -86,6 +85,9 @@ class Main {
     e.preventDefault();
     this.level++;
     this.startLevel(this.level);
+    if (this.input?.value) {
+      this.input.value = '';
+    }
   };
 }
 
