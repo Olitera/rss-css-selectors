@@ -20,6 +20,9 @@ export class HtmlItem {
     if (this._item.className) {
       text += ` class="${this._item.className}"`;
     }
+    if (this._item.id) {
+      text += ` id="${this._item.id}"`;
+    }
     if (this._item.child) {
       openTag.innerText = text + '>';
       this.element.append(openTag);

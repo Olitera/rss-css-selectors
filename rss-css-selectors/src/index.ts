@@ -15,6 +15,7 @@ class Main {
   private presentation!: Presentation;
   private form?: HTMLFormElement | null;
   private level: number;
+  private levels?: Level;
 
   constructor() {
     this.renderMain();
@@ -23,6 +24,7 @@ class Main {
   }
 
   startLevel(number: number): void {
+    this.levels?.levelsArray[number].setAsCurrent();
     this.presentation.renderTable(number);
     this.items = this.presentation.table?.itemsArray;
     const htmlItemsArray = this.items?.map((element) => {
@@ -53,7 +55,6 @@ class Main {
     const mainContainer: HTMLDivElement = document.createElement('div');
     mainContainer.className = 'main-container';
     this.presentation = new Presentation();
-    // this.table = presentation.table;
     const cssHtml: HTMLElement = document.createElement('div');
     cssHtml.className = 'css-html';
     const editor: Editor = new Editor();
@@ -61,13 +62,13 @@ class Main {
     this.input = editor.input;
     const viewer: Viewer = new Viewer();
     this.tableCode = viewer.tableCode;
-    const level: Level = new Level();
+    this.levels = new Level();
     const footer: Footer = new Footer();
     const body: HTMLBodyElement = document.querySelector('body') as HTMLBodyElement;
     body?.append(bodyContainer);
     body?.append(footer.element);
     bodyContainer.append(mainContainer);
-    bodyContainer.append(level.element);
+    bodyContainer.append(this.levels.element);
     mainContainer.append(this.presentation.element);
     mainContainer.append(cssHtml);
     cssHtml.append(editor.element);
@@ -83,8 +84,13 @@ class Main {
 
   private onSubmit: (e: Event) => void = (e: Event) => {
     e.preventDefault();
+    this.levels?.levelsArray[this.level].setAsPassed();
     this.level++;
-    this.startLevel(this.level);
+    if (this.level === levelsConfig.length) {
+      alert('win');
+    } else {
+      this.startLevel(this.level);
+    }
     if (this.input?.value) {
       this.input.value = '';
     }

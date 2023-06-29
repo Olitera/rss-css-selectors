@@ -2,10 +2,12 @@ import './levels.scss';
 import el from './levels.html';
 import { templateCreation } from '../../helper/template';
 import { LevelItem } from './level-item/level-item';
+import { levelsConfig } from '../../levelsConfig/game';
 
 // export const level: ChildNode = templateCreation(el);
 export class Level {
   public element: HTMLElement;
+  public levelsArray: LevelItem[] = [];
 
   constructor() {
     this.element = templateCreation(el) as HTMLElement;
@@ -15,8 +17,9 @@ export class Level {
   renderLevel(): void {
     const levelTitle = this.element.querySelector('.level-title');
     console.log(levelTitle);
-    for (let i = 10; i > 0; i--) {
+    for (let i = levelsConfig.length; i > 0; i--) {
       const levelItem = new LevelItem(i);
+      this.levelsArray.unshift(levelItem);
       levelTitle?.after(levelItem.element);
     }
   }

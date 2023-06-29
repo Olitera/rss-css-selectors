@@ -1,70 +1,70 @@
 import { ILevelConfig } from '../interfaces/level-config';
 
 export const levelsConfig: ILevelConfig[] = [
-  // {
-  //   answear: 'bento',
-  //   description: 'Select the bento',
-  //   level: [
-  //     {
-  //       tag: 'bento',
-  //     },
-  //     {
-  //       tag: 'plate',
-  //     },
-  //   ],
-  // },
-  // {
-  //   answear: 'plate',
-  //   description: 'Select the plates',
-  //   level: [
-  //     {
-  //       tag: 'plate',
-  //     },
-  //     {
-  //       tag: 'bento',
-  //     },
-  //     {
-  //       tag: 'plate',
-  //     },
-  //   ],
-  // },
-  // {
-  //   answear: 'plate orange',
-  //   description: 'Select the orange on the plate',
-  //   level: [
-  //     {
-  //       tag: 'plate',
-  //       child: {
-  //         tag: 'orange',
-  //       },
-  //     },
-  //     {
-  //       tag: 'orange',
-  //     },
-  //     {
-  //       tag: 'bento',
-  //     },
-  //   ],
-  // },
-  // {
-  //   answear: ['\.red', 'apple\.red'],
-  //   description: 'Select the red apple',
-  //   level: [
-  //     {
-  //       tag: 'apple',
-  //     },
-  //     {
-  //       tag: 'orange',
-  //     },
-  //     {
-  //       tag: 'plate',
-  //     },
-  //     {
-  //       tag: 'apple',
-  //       className: 'red',
-  //     },
-  //   ],
-  // },
+  {
+    answear: ['bento'],
+    description: 'Select the bento',
+    level: [
+      {
+        tag: 'bento',
+      },
+      {
+        tag: 'plate',
+      },
+    ],
+  },
+  {
+    answear: ['plate'],
+    description: 'Select the plates',
+    level: [
+      {
+        tag: 'plate',
+      },
+      {
+        tag: 'bento',
+      },
+      {
+        tag: 'plate',
+      },
+    ],
+  },
+  {
+    answear: ['plate orange'],
+    description: 'Select the orange on the plate',
+    level: [
+      {
+        tag: 'plate',
+        child: {
+          tag: 'orange',
+        },
+      },
+      {
+        tag: 'orange',
+      },
+      {
+        tag: 'bento',
+      },
+    ],
+  },
+  {
+    answear: ['\\.red', 'apple\\.red'],
+    description: 'Select the red apple',
+    level: [
+      {
+        tag: 'apple',
+      },
+      {
+        tag: 'orange',
+      },
+      {
+        tag: 'plate',
+      },
+      {
+        tag: 'apple',
+        className: 'red',
+      },
+    ],
+  },
   {
     answear: ['#colorful apple'],
     description: 'Select the apple on the colorful plate',
@@ -163,7 +163,7 @@ export const levelsConfig: ILevelConfig[] = [
     ],
   },
   {
-    answear: ['bento ?apple, bento ?orange', 'bento ?orange, bento ?apple'],
+    answear: ['bento ?apple, bento ?orange', 'bento ?orange, bento ?apple', 'bento \\*'],
     description: 'Select the apple and the orange in the bento',
     level: [
       {

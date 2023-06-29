@@ -17,10 +17,9 @@ export class Item {
       (this.element as HTMLElement).classList.add(itemConfig.className);
       this.className = itemConfig.className;
     }
-    // if (itemConfig.id) {
-    //   this.element as HTMLElement).
-    //     // .add(itemConfig.id);
-    //   this.className = itemConfig.className;
-    // }
+    if (itemConfig.id) {
+      (this.element as HTMLElement).setAttribute('id', itemConfig.id);
+      this.id = itemConfig.id;
+    }
   }
 }
