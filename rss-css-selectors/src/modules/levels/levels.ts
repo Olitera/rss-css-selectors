@@ -4,7 +4,6 @@ import { templateCreation } from '../../helper/template';
 import { LevelItem } from './level-item/level-item';
 import { levelsConfig } from '../../levelsConfig/game';
 
-// export const level: ChildNode = templateCreation(el);
 export class Level {
   public element: HTMLElement;
   public levelsArray: LevelItem[] = [];

@@ -1,14 +1,16 @@
 .level-item {
+  width: 70%;
   display: flex;
   flex-direction: row;
   column-gap: 20px;
   color: #FFFFFF;
+  font-size: 25px;
 }
 
 .passed {
-  color: yellow;
+  color: #fdfd08;
 }
 
 .current {
-  background-color: #c9b462;
+  background-color: #a59b76;
 }
