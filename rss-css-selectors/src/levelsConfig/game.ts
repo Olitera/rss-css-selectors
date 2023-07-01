@@ -7,6 +7,7 @@ export const levelsConfig: ILevelConfig[] = [
     level: [
       {
         tag: 'bento',
+        right: 'right',
       },
       {
         tag: 'plate',
@@ -19,12 +20,14 @@ export const levelsConfig: ILevelConfig[] = [
     level: [
       {
         tag: 'plate',
+        right: 'right',
       },
       {
         tag: 'bento',
       },
       {
         tag: 'plate',
+        right: 'right',
       },
     ],
   },
@@ -36,6 +39,7 @@ export const levelsConfig: ILevelConfig[] = [
         tag: 'plate',
         child: {
           tag: 'orange',
+          right: 'right',
         },
       },
       {
@@ -62,6 +66,7 @@ export const levelsConfig: ILevelConfig[] = [
       {
         tag: 'apple',
         className: 'red',
+        right: 'right',
       },
     ],
   },
@@ -80,6 +85,7 @@ export const levelsConfig: ILevelConfig[] = [
         id: 'colorful',
         child: {
           tag: 'apple',
+          right: 'right',
         },
       },
       {
@@ -88,18 +94,21 @@ export const levelsConfig: ILevelConfig[] = [
     ],
   },
   {
-    answear: ['*'],
+    answear: ['\\*'],
     description: 'Select all the things',
     level: [
       {
         tag: 'bento',
+        right: 'right',
       },
       {
         tag: 'plate',
         id: 'colorful',
+        right: 'right',
       },
       {
         tag: 'apple',
+        right: 'right',
       },
       {
         tag: 'bento',
@@ -107,6 +116,7 @@ export const levelsConfig: ILevelConfig[] = [
           tag: 'orange',
         },
         className: 'violet',
+        right: 'right',
       },
     ],
   },
@@ -117,6 +127,7 @@ export const levelsConfig: ILevelConfig[] = [
       {
         tag: 'apple',
         className: 'red',
+        right: 'right',
       },
       {
         tag: 'plate',
@@ -126,10 +137,12 @@ export const levelsConfig: ILevelConfig[] = [
         tag: 'bento',
         child: {
           tag: 'orange',
+          right: 'right',
         },
       },
       {
         tag: 'orange',
+        right: 'right',
       },
     ],
   },
@@ -150,12 +163,14 @@ export const levelsConfig: ILevelConfig[] = [
           tag: 'apple',
           className: 'red',
         },
+        right: 'right',
       },
       {
         tag: 'plate',
         child: {
           tag: 'orange',
         },
+        right: 'right',
       },
       {
         tag: 'apple',
@@ -170,6 +185,7 @@ export const levelsConfig: ILevelConfig[] = [
         tag: 'bento',
         child: {
           tag: 'apple',
+          right: 'right',
         },
         className: 'violet',
       },
@@ -180,6 +196,7 @@ export const levelsConfig: ILevelConfig[] = [
         tag: 'bento',
         child: {
           tag: 'orange',
+          right: 'right',
         },
       },
       {
@@ -205,6 +222,7 @@ export const levelsConfig: ILevelConfig[] = [
       },
       {
         tag: 'orange',
+        right: 'right',
       },
       {
         tag: 'bento',
@@ -214,6 +232,7 @@ export const levelsConfig: ILevelConfig[] = [
       },
       {
         tag: 'orange',
+        right: 'right',
       },
     ],
   },

@@ -3,4 +3,5 @@ export interface IItemConfig {
   className?: string;
   child?: IItemConfig;
   id?: string;
+  right?: string;
 }

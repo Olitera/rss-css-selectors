@@ -16,6 +16,7 @@ class Main {
   private form?: HTMLFormElement | null;
   private level: number;
   private levels?: Level;
+  private cssHtml?: HTMLElement;
 
   constructor() {
     this.renderMain();
@@ -55,8 +56,8 @@ class Main {
     const mainContainer: HTMLDivElement = document.createElement('div');
     mainContainer.className = 'main-container';
     this.presentation = new Presentation();
-    const cssHtml: HTMLElement = document.createElement('div');
-    cssHtml.className = 'css-html';
+    this.cssHtml = document.createElement('div');
+    this.cssHtml.className = 'css-html';
     const editor: Editor = new Editor();
     this.form = editor.form;
     this.input = editor.input;
@@ -70,15 +71,16 @@ class Main {
     bodyContainer.append(mainContainer);
     bodyContainer.append(this.levels.element);
     mainContainer.append(this.presentation.element);
-    mainContainer.append(cssHtml);
-    cssHtml.append(editor.element);
-    cssHtml.append(viewer.element);
+    mainContainer.append(this.cssHtml);
+    this.cssHtml.append(editor.element);
+    this.cssHtml.append(viewer.element);
     this.checkForm();
   }
 
   private checkForm(): void {
     if (this.form) {
       this.form.addEventListener('submit', this.onSubmit);
+      this.input?.addEventListener('invalid', this.onError);
     }
   }
 
@@ -86,14 +88,32 @@ class Main {
     e.preventDefault();
     this.levels?.levelsArray[this.level].setAsPassed();
     this.level++;
-    if (this.level === levelsConfig.length) {
-      alert('win');
-    } else {
-      this.startLevel(this.level);
-    }
-    console.log(this.input);
+    this.items?.forEach((item) => {
+      if (item.right) {
+        (item.element as HTMLElement).classList.add('fly-away');
+      }
+      console.log(item.child);
+      if (item.child && item.child.right) {
+        console.log(item.child);
+        (item.child.element as HTMLElement).classList.add('fly-away');
+      }
+    });
+    setTimeout(() => {
+      if (this.level === levelsConfig.length) {
+        alert('win');
+      } else {
+        this.startLevel(this.level);
+      }
+    }, 500);
     if (this.input?.value) {
       this.input.value = '';
+    }
+  };
+
+  private onError = (e: Event) => {
+    e.preventDefault();
+    if (this.cssHtml) {
+      this.cssHtml.classList.add('wrong');
     }
   };
 }

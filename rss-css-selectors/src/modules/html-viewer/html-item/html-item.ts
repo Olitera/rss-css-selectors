@@ -11,10 +11,8 @@ export class HtmlItem {
     this._item = item;
     this.element = templateCreation(el) as HTMLElement;
     this.createTag();
-    this.element.addEventListener('mouseover', this.addListener);
-    this.element.addEventListener('mouseout', this.addListener);
-    this._item.element.addEventListener('mouseover', this.addListener);
-    this._item.element.addEventListener('mouseout', this.addListener);
+    this.addListener(this.element);
+    this.addListener(this._item.element);
   }
 
   createTag(): void {
@@ -34,7 +32,12 @@ export class HtmlItem {
     }
   }
 
-  addListener = (e: Event) => {
+  private addListener(el: ChildNode) {
+    el.addEventListener('mouseover', this.addListenerFunction);
+    el.addEventListener('mouseout', this.addListenerFunction);
+  }
+
+  private addListenerFunction = (e: Event) => {
     (this._item.element as HTMLElement).classList.toggle('active');
     this.element.classList.toggle('active');
     e.stopPropagation();

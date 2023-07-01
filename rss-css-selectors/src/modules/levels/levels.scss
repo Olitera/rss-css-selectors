@@ -16,12 +16,14 @@
 .level-but {
   width: 70%;
   height: 50px;
-  border: none;
+  background-color: #302d2d;
+  border: 2px solid #b6abab;
   font-size: 16px;
-  background-color: #b6abab;
+  color: #b6abab;
   cursor: pointer;
 }
 
 .level-but:hover {
   background-color: #a59b76;
+  color: #302d2d;
 }

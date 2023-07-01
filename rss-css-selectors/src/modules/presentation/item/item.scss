@@ -75,3 +75,11 @@
     transform: translateY(-100vh);
   }
 }
+
+.right {
+  border: 2px solid #5f0eaa;
+}
+
+.wrong {
+  transform: rotateZ(30deg);
+}
