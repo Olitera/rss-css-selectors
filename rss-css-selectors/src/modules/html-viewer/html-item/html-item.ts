@@ -11,7 +11,10 @@ export class HtmlItem {
     this._item = item;
     this.element = templateCreation(el) as HTMLElement;
     this.createTag();
-    this.element.addEventListener('mouseenter, mouseleave', this.addListener);
+    this.element.addEventListener('mouseover', this.addListener);
+    this.element.addEventListener('mouseout', this.addListener);
+    this._item.element.addEventListener('mouseover', this.addListener);
+    this._item.element.addEventListener('mouseout', this.addListener);
   }
 
   createTag(): void {
@@ -31,7 +34,9 @@ export class HtmlItem {
     }
   }
 
-  addListener = () => {
+  addListener = (e: Event) => {
     (this._item.element as HTMLElement).classList.toggle('active');
+    this.element.classList.toggle('active');
+    e.stopPropagation();
   };
 }

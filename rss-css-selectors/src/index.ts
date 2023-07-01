@@ -91,6 +91,7 @@ class Main {
     } else {
       this.startLevel(this.level);
     }
+    console.log(this.input);
     if (this.input?.value) {
       this.input.value = '';
     }

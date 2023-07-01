@@ -11,7 +11,7 @@ export class Editor {
   constructor() {
     this.element = templateCreation(el) as HTMLElement;
     this.form = this.element.querySelector('form');
-    this.input = this.element.querySelector('.selector');
+    this.input = this.element.querySelector('.editor-selector');
     this.renderCssEditor();
   }
 

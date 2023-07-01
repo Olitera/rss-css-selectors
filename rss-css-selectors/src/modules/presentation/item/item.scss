@@ -61,10 +61,12 @@
   background: #5f0eaa;
 }
 
-.plate, .bento, .orange, .apple {
+.plate,
+.bento,
+.orange,
+.apple {
   transform: translateY(0);
   transition: ease-in-out 500ms;
-  &:hover,
   &.active {
     border: 5px solid yellow;
   }
