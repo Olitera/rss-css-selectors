@@ -16,7 +16,7 @@ export class HtmlItem {
   }
 
   createTag(): void {
-    const openTag = document.createElement('span');
+    const openTag: HTMLSpanElement = document.createElement('span');
     let text = `<${this._item.tag}`;
     if (this._item.className) {
       text += ` class="${this._item.className}"`;
@@ -37,7 +37,7 @@ export class HtmlItem {
     el.addEventListener('mouseout', this.addListenerFunction);
   }
 
-  private addListenerFunction = (e: Event) => {
+  private addListenerFunction = (e: Event): void => {
     (this._item.element as HTMLElement).classList.toggle('active');
     this.element.classList.toggle('active');
     e.stopPropagation();

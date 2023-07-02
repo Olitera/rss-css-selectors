@@ -7,6 +7,7 @@ import { Footer } from './modules/footer/footer';
 import { Item } from './modules/presentation/item/item';
 import { HtmlItem } from './modules/html-viewer/html-item/html-item';
 import { levelsConfig } from './levelsConfig/game';
+import { LevelItem } from './modules/levels/level-item/level-item';
 
 class Main {
   private input?: HTMLInputElement | null;
@@ -17,7 +18,6 @@ class Main {
   private level: number;
   private levels?: Level;
   private cssHtml?: HTMLElement;
-  // private help?: HTMLButtonElement;
 
   constructor() {
     this.renderMain();
@@ -26,28 +26,22 @@ class Main {
   }
 
   startLevel(number: number): void {
+    this.level = number;
     this.levels?.levelsArray[number].setAsCurrent();
     this.presentation.renderTable(number);
     this.items = this.presentation.table?.itemsArray;
-    const htmlItemsArray = this.items?.map((element) => {
-      const htmlItemm = new HtmlItem(element);
-      // let animation = htmlItemm.animate([
-      //   {transform: 'translate(0)'},
-      //   {transform: 'translate(150px, 200px)'}
-      // ], 500);
-      // animation.addEventListener('finish', function() {
-      //   htmlItemm.style.transform = 'translate(150px, 200px)';
-      // });
+    const htmlItemsArray: HtmlItem[] | undefined = this.items?.map((element: Item) => {
+      const htmlItemm: HtmlItem = new HtmlItem(element);
       if (element.child) {
-        const htmlItemChild = new HtmlItem(element.child);
+        const htmlItemChild: HtmlItem = new HtmlItem(element.child);
         htmlItemm.element?.append(htmlItemChild.element);
-        const endTag = document.createElement('span');
+        const endTag: HTMLSpanElement = document.createElement('span');
         endTag.innerText = `</${element.tag}>`;
         htmlItemm.element?.append(endTag);
       }
       return htmlItemm;
     });
-    const tags = htmlItemsArray?.map((el) => el.element);
+    const tags: HTMLElement[] | undefined = htmlItemsArray?.map((el: HtmlItem) => el.element);
     if (this.tableCode && tags) {
       this.tableCode.innerHTML = '';
       this.tableCode.append(...tags);
@@ -72,6 +66,13 @@ class Main {
     const viewer: Viewer = new Viewer();
     this.tableCode = viewer.tableCode;
     this.levels = new Level();
+    this.levels.levelsArray.forEach((level: LevelItem) =>
+      level.element.addEventListener('click', (): void => {
+        console.log(this.level);
+        this.levels?.levelsArray[this.level].setAsNotCurren();
+        this.startLevel(level.levelNumber - 1);
+      })
+    );
     const footer: Footer = new Footer();
     const body: HTMLBodyElement = document.querySelector('body') as HTMLBodyElement;
     body?.append(bodyContainer);
@@ -92,11 +93,11 @@ class Main {
     }
   }
 
-  private onSubmit: (e: Event) => void = (e: Event) => {
+  private onSubmit: (e: Event) => void = (e: Event): void => {
     e.preventDefault();
     this.levels?.levelsArray[this.level].setAsPassed();
     this.level++;
-    this.items?.forEach((item) => {
+    this.items?.forEach((item: Item): void => {
       if (item.right) {
         (item.element as HTMLElement).classList.remove('right');
         setTimeout(() => (item.element as HTMLElement).classList.add('fly-away'), 100);
@@ -108,7 +109,7 @@ class Main {
         setTimeout(() => (item.child?.element as HTMLElement).classList.add('fly-away'), 100);
       }
     });
-    setTimeout(() => {
+    setTimeout((): void => {
       if (this.level === levelsConfig.length) {
         alert('win');
       } else {
@@ -120,14 +121,14 @@ class Main {
     }
   };
 
-  private onError = (e: Event) => {
+  private onError = (e: Event): void => {
     e.preventDefault();
     if (this.cssHtml) {
       this.cssHtml.classList.add('wrong');
     }
   };
 
-  correctAnswer = () => {
+  correctAnswer = (): void => {
     if (this.input) {
       this.input.value = levelsConfig[this.level].answear[0];
     }

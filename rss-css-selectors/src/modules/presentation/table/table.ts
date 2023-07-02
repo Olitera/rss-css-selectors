@@ -23,7 +23,7 @@ export class Table {
     });
   }
 
-  createItem(elem: IItemConfig) {
+  createItem(elem: IItemConfig): Item {
     this.item = new Item(elem);
     if (elem.child) {
       this.item.child = new Item(elem.child);

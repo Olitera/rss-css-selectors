@@ -15,9 +15,8 @@ export class Level {
 
   renderLevel(): void {
     const levelTitle = this.element.querySelector('.level-title');
-    console.log(levelTitle);
-    for (let i = levelsConfig.length; i > 0; i--) {
-      const levelItem = new LevelItem(i);
+    for (let i: number = levelsConfig.length; i > 0; i--) {
+      const levelItem: LevelItem = new LevelItem(i);
       this.levelsArray.unshift(levelItem);
       levelTitle?.after(levelItem.element);
     }

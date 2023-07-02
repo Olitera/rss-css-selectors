@@ -4,8 +4,8 @@ import { templateCreation } from '../../helper/template';
 
 export class Numbers {
   public element: HTMLElement;
-  private count: number;
-  private color?: string;
+  public count: number;
+  public color?: string;
 
   constructor(count: number, color?: string) {
     this.element = templateCreation(el) as HTMLElement;
@@ -14,8 +14,7 @@ export class Numbers {
     this.renderNumbers();
   }
 
-  renderNumbers() {
-    // const numbers = 20;
+  renderNumbers(): void {
     for (let i = 0; i < this.count; i++) {
       const numbersLinea: ChildNode = templateCreation(`<div class="numbers-table-linea">${i + 1}</div>`);
       if (this.color) {

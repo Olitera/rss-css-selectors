@@ -2,11 +2,9 @@ import './level-item.scss';
 import el from './level-item.html';
 import { templateCreation } from '../../../helper/template';
 
-// export const levelItem: ChildNode = templateCreation(el);
-
 export class LevelItem {
   public element: HTMLElement;
-  private readonly levelNumber: number;
+  public levelNumber: number;
   private isPassed?: boolean;
   private isCurrent?: boolean;
 
@@ -16,17 +14,24 @@ export class LevelItem {
     this.renderlevelNumber();
   }
 
-  setAsCurrent() {
+  setAsCurrent(): void {
     this.isCurrent = true;
     this.element.classList.add('current');
   }
-  setAsPassed() {
+
+  setAsNotCurren(): void {
+    this.isCurrent = false;
+    this.element.classList.remove('current');
+  }
+
+  setAsPassed(): void {
     this.isPassed = true;
     this.isCurrent = false;
     this.element.classList.add('passed');
     this.element.classList.remove('current');
   }
-  renderlevelNumber() {
+
+  renderlevelNumber(): void {
     const levelNumber = this.element.querySelector('.level-number');
     if (levelNumber) {
       levelNumber.innerHTML = String(this.levelNumber);
