@@ -17,6 +17,7 @@ class Main {
   private level: number;
   private levels?: Level;
   private cssHtml?: HTMLElement;
+  // private help?: HTMLButtonElement;
 
   constructor() {
     this.renderMain();
@@ -30,6 +31,13 @@ class Main {
     this.items = this.presentation.table?.itemsArray;
     const htmlItemsArray = this.items?.map((element) => {
       const htmlItemm = new HtmlItem(element);
+      // let animation = htmlItemm.animate([
+      //   {transform: 'translate(0)'},
+      //   {transform: 'translate(150px, 200px)'}
+      // ], 500);
+      // animation.addEventListener('finish', function() {
+      //   htmlItemm.style.transform = 'translate(150px, 200px)';
+      // });
       if (element.child) {
         const htmlItemChild = new HtmlItem(element.child);
         htmlItemm.element?.append(htmlItemChild.element);
@@ -47,7 +55,7 @@ class Main {
     if (this.input) {
       this.input.pattern = levelsConfig[number].answear.join('|');
     }
-    console.log(this.items);
+    this.presentation.help?.addEventListener('click', this.correctAnswer);
   }
 
   renderMain(): void {
@@ -90,12 +98,14 @@ class Main {
     this.level++;
     this.items?.forEach((item) => {
       if (item.right) {
-        (item.element as HTMLElement).classList.add('fly-away');
+        (item.element as HTMLElement).classList.remove('right');
+        setTimeout(() => (item.element as HTMLElement).classList.add('fly-away'), 100);
       }
       console.log(item.child);
       if (item.child && item.child.right) {
         console.log(item.child);
-        (item.child.element as HTMLElement).classList.add('fly-away');
+        (item.child.element as HTMLElement).classList.remove('right');
+        setTimeout(() => (item.child?.element as HTMLElement).classList.add('fly-away'), 100);
       }
     });
     setTimeout(() => {
@@ -114,6 +124,12 @@ class Main {
     e.preventDefault();
     if (this.cssHtml) {
       this.cssHtml.classList.add('wrong');
+    }
+  };
+
+  correctAnswer = () => {
+    if (this.input) {
+      this.input.value = levelsConfig[this.level].answear[0];
     }
   };
 }

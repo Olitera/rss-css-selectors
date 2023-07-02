@@ -77,9 +77,27 @@
 }
 
 .right {
-  border: 2px solid #5f0eaa;
+  //transform: rotateZ(5deg);
+  animation: 1s infinite alternate sun-rise;
 }
 
 .wrong {
   transform: rotateZ(30deg);
+}
+
+@keyframes sun-rise {
+  0%, 100% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+  30% {
+    transform: translate(5px, 5px) rotateZ(5deg);
+  }
+  //68%,
+  72% {
+    transform: translate(5px, -5px) rotateZ(-5deg);
+  }
+  //100% {
+  //  top: 100px;
+  //  left: 100%;
+  //}
 }

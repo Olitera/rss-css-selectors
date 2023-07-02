@@ -22,6 +22,7 @@ export class Presentation {
     this.help = document.createElement('button');
     this.help.className = 'presentation-but';
     this.help.innerText = 'Help';
+    // this.help.addEventListener('click', this.correctAnswer);
     this.description = document.createElement('div');
     this.description.className = 'description';
     this.description.innerText = levelsConfig[level].description;
