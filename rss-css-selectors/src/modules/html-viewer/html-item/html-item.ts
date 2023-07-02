@@ -2,29 +2,32 @@ import './html-item.scss';
 import el from './html-item.html';
 import { templateCreation } from '../../../helper/template';
 import { Item } from '../../presentation/item/item';
+import { Message } from '../../message/message';
 
 export class HtmlItem {
   public element: HTMLElement;
-  private _item: Item;
+  private item: Item;
+  private message?: Message;
 
-  constructor(item: Item) {
-    this._item = item;
+  constructor(item: Item, message?: Message) {
+    this.item = item;
+    this.message = message;
     this.element = templateCreation(el) as HTMLElement;
     this.createTag();
     this.addListener(this.element);
-    this.addListener(this._item.element);
+    this.addListener(this.item.element);
   }
 
   createTag(): void {
     const openTag: HTMLSpanElement = document.createElement('span');
-    let text = `<${this._item.tag}`;
-    if (this._item.className) {
-      text += ` class="${this._item.className}"`;
+    let text = `<${this.item.tag}`;
+    if (this.item.className) {
+      text += ` class="${this.item.className}"`;
     }
-    if (this._item.id) {
-      text += ` id="${this._item.id}"`;
+    if (this.item.id) {
+      text += ` id="${this.item.id}"`;
     }
-    if (this._item.child) {
+    if (this.item.child) {
       openTag.innerText = text + '>';
       this.element.append(openTag);
     } else {
@@ -38,7 +41,10 @@ export class HtmlItem {
   }
 
   private addListenerFunction = (e: Event): void => {
-    (this._item.element as HTMLElement).classList.toggle('active');
+    (this.item.element as HTMLElement).classList.toggle('active');
+    const x = (this.item.element as HTMLElement).offsetLeft + 20;
+    const y = (this.item.element as HTMLElement).offsetTop - 30;
+    this.message?.show(`<${this.item.tag}`, x, y);
     this.element.classList.toggle('active');
     e.stopPropagation();
   };

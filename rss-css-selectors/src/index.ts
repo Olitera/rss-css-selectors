@@ -8,6 +8,7 @@ import { Item } from './modules/presentation/item/item';
 import { HtmlItem } from './modules/html-viewer/html-item/html-item';
 import { levelsConfig } from './levelsConfig/game';
 import { LevelItem } from './modules/levels/level-item/level-item';
+import { Message } from './modules/message/message';
 
 class Main {
   private input?: HTMLInputElement | null;
@@ -18,6 +19,7 @@ class Main {
   private level: number;
   private levels?: Level;
   private cssHtml?: HTMLElement;
+  private message?: Message;
 
   constructor() {
     this.renderMain();
@@ -31,9 +33,9 @@ class Main {
     this.presentation.renderTable(number);
     this.items = this.presentation.table?.itemsArray;
     const htmlItemsArray: HtmlItem[] | undefined = this.items?.map((element: Item) => {
-      const htmlItemm: HtmlItem = new HtmlItem(element);
+      const htmlItemm: HtmlItem = new HtmlItem(element, this.message);
       if (element.child) {
-        const htmlItemChild: HtmlItem = new HtmlItem(element.child);
+        const htmlItemChild: HtmlItem = new HtmlItem(element.child, this.message);
         htmlItemm.element?.append(htmlItemChild.element);
         const endTag: HTMLSpanElement = document.createElement('span');
         endTag.innerText = `</${element.tag}>`;
@@ -84,6 +86,9 @@ class Main {
     this.cssHtml.append(editor.element);
     this.cssHtml.append(viewer.element);
     this.checkForm();
+    this.message = new Message();
+    body.append(this.message.element);
+    // this.message.show('gkuyguioyg', 160, 465);
   }
 
   private checkForm(): void {
