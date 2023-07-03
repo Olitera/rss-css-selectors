@@ -4,7 +4,16 @@
   flex-direction: row;
   column-gap: 20px;
   color: #FFFFFF;
-  font-size: 25px;
+  font-size: 20px;
+  //cursor: pointer;
+}
+
+.level-check {
+  cursor: pointer;
+}
+
+.level-number {
+  cursor: pointer;
 }
 
 .passed {

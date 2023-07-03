@@ -17,7 +17,7 @@ export class Editor {
 
   renderCssEditor(): void {
     const editorMain: Element | null = this.element.querySelector('.editor-main');
-    const tableCSS: Numbers = new Numbers(20, 'table-linea');
+    const tableCSS: Numbers = new Numbers(16, 'table-linea');
     editorMain?.append(tableCSS.element);
   }
 }

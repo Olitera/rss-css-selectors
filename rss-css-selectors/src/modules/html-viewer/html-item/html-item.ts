@@ -42,8 +42,8 @@ export class HtmlItem {
 
   private addListenerFunction = (e: Event): void => {
     (this.item.element as HTMLElement).classList.toggle('active');
-    const x = (this.item.element as HTMLElement).offsetLeft + 20;
-    const y = (this.item.element as HTMLElement).offsetTop - 30;
+    const x = (this.item.element as HTMLElement).offsetLeft + 220;
+    const y = (this.item.element as HTMLElement).offsetTop + 15;
     this.message?.show(`<${this.item.tag}`, x, y);
     this.element.classList.toggle('active');
     e.stopPropagation();

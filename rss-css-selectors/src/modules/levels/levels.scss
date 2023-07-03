@@ -1,16 +1,17 @@
 .level {
   width: 15%;
-  height: 1020px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 15px;
+  row-gap: 13px;
   border: 2px solid #b6abab;
 }
 
 .level-title {
-  font-size: 25px;
+  font-size: 23px;
   color: #b6abab;
+  margin-block-end: 5px;
 }
 
 .level-but {
