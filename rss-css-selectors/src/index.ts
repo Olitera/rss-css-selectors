@@ -20,10 +20,24 @@ class Main {
   private levels?: Level;
   private cssHtml?: HTMLElement;
   private message?: Message;
+  private reset?: Element | null;
 
   constructor() {
     this.renderMain();
     this.level = 0;
+    const dataFromLS = localStorage.getItem('gameConfig');
+    if (dataFromLS && this.levels) {
+      const data: { currentLevel: number; levelsConfig: LevelItem[] | undefined } = JSON.parse(dataFromLS);
+      console.log(data);
+      this.levels.levelsArray.forEach((level, i) => {
+        if (data.levelsConfig && data.levelsConfig[i].isPassed) {
+          console.log(level);
+          level.setAsPassed();
+        }
+      });
+      this.level = data.currentLevel;
+      // console.log(this.level, this.level);
+    }
     this.startLevel(this.level);
   }
 
@@ -52,6 +66,7 @@ class Main {
       this.input.pattern = levelsConfig[number].answear.join('|');
     }
     this.presentation.help?.addEventListener('click', this.correctAnswer);
+    this.setLocalStorage(number);
   }
 
   renderMain(): void {
@@ -71,10 +86,12 @@ class Main {
     this.levels.levelsArray.forEach((level: LevelItem) =>
       level.element.addEventListener('click', (): void => {
         console.log(this.level);
-        this.levels?.levelsArray[this.level].setAsNotCurren();
+        this.levels?.levelsArray[this.level].setAsNotCurrent();
         this.startLevel(level.levelNumber - 1);
       })
     );
+    this.reset = this.levels.reset;
+    this.reset?.addEventListener('click', this.resetGame);
     const footer: Footer = new Footer();
     const body: HTMLBodyElement = document.querySelector('body') as HTMLBodyElement;
     body?.append(bodyContainer);
@@ -133,30 +150,44 @@ class Main {
     }
   };
 
-  correctAnswer = (): void => {
+  correctAnswer: () => void = (): void => {
     if (this.input) {
       this.input.value = levelsConfig[this.level].answear[0];
     }
+  };
+
+  private setLocalStorage(currentLevelNumber: number): void {
+    const game: { currentLevel: number; levelsConfig: LevelItem[] | undefined } = {
+      currentLevel: currentLevelNumber,
+      levelsConfig: this.levels?.levelsArray,
+    };
+    localStorage.setItem('gameConfig', JSON.stringify(game));
+    console.log(game);
+  }
+
+  private resetGame: () => void = (): void => {
+    localStorage.removeItem('gameConfig');
+    this.level = 0;
+    this.levels?.levelsArray.forEach((level) => {
+      level.setAsNotCurrent();
+      level.setNotPassed();
+    });
+    this.startLevel(this.level);
   };
 }
 
 new Main();
 
 console.log(`
--При перезагрузке приложение открывается на этом же уровне 
 -Рядом с элементом отображается его html-код
 -выводится уведомление о победе
 -Если пользователь ответил неправильно, отображается соответствующая анимация
 -Клик по кнопке Help выводит нужный селектор в окне для ввода кода. Селектор выводится с эффектом печати текста (плавное появление текста по буквам) 
 -или уровень выполнен с использованием подсказки
--Есть кнопка, позволяющая сбросить прогресс и начать прохождение игры заново
 -Внешний вид приложения 
--для стандартных разрешений экрана монитора до 1024×768 включительно, приложение полностью помещается в экран без появления полосы прокрутки. При меньшем разрешении экрана может появиться вертикальная полоса прокрутки.
 -Минимальная ширина страницы, при которой проверяется корректность отображения приложения - 500рх
--интерактивность элементов, с которыми пользователи могут взаимодействовать, изменение внешнего вида самого элемента и состояния курсора при наведении, использование разных стилей для активного и неактивного состояния элемента, плавные анимации
+-использование разных стилей для активного и неактивного состояния элемента, плавные анимации
 -используются Generics
--использование Object Types
--использование Function
 -дублирование кода сведено к минимуму, не используются магические числа, используются осмысленные имена переменных и функций, оптимальный размер функций и т.д.
 -динамическое добавление новых компонентов средствами JavaScript(в зависимости от приложения возможны: определенные элементы игры, новые уровни, карточки элементов/товаров) 
 -реализованы юнит-тесты, использующие различные методы jest – 2 балла за каждую покрытую функцию/метод, но не более 20 баллов (процент покрытия каждой функции/метода не учитывается)

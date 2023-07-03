@@ -7,10 +7,12 @@ import { levelsConfig } from '../../levelsConfig/game';
 export class Level {
   public element: HTMLElement;
   public levelsArray: LevelItem[] = [];
+  public reset: Element | null;
 
   constructor() {
     this.element = templateCreation(el) as HTMLElement;
     this.renderLevel();
+    this.reset = this.element.querySelector('.level-but');
   }
 
   renderLevel(): void {

@@ -3,6 +3,7 @@ import el from './html-item.html';
 import { templateCreation } from '../../../helper/template';
 import { Item } from '../../presentation/item/item';
 import { Message } from '../../message/message';
+import { Listener } from '../../../types/listener';
 
 export class HtmlItem {
   public element: HTMLElement;
@@ -40,7 +41,7 @@ export class HtmlItem {
     el.addEventListener('mouseout', this.addListenerFunction);
   }
 
-  private addListenerFunction = (e: Event): void => {
+  private addListenerFunction: Listener = (e: Event): void => {
     (this.item.element as HTMLElement).classList.toggle('active');
     const x = (this.item.element as HTMLElement).offsetLeft + 220;
     const y = (this.item.element as HTMLElement).offsetTop + 15;

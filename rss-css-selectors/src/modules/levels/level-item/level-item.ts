@@ -5,7 +5,7 @@ import { templateCreation } from '../../../helper/template';
 export class LevelItem {
   public element: HTMLElement;
   public levelNumber: number;
-  private isPassed?: boolean;
+  public isPassed?: boolean;
   private isCurrent?: boolean;
 
   constructor(levelNumber: number) {
@@ -19,7 +19,7 @@ export class LevelItem {
     this.element.classList.add('current');
   }
 
-  setAsNotCurren(): void {
+  setAsNotCurrent(): void {
     this.isCurrent = false;
     this.element.classList.remove('current');
   }
@@ -29,6 +29,11 @@ export class LevelItem {
     this.isCurrent = false;
     this.element.classList.add('passed');
     this.element.classList.remove('current');
+  }
+
+  setNotPassed() {
+    this.isPassed = false;
+    this.element.classList.remove('passed');
   }
 
   renderlevelNumber(): void {
