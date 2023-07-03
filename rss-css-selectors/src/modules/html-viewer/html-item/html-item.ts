@@ -36,16 +36,20 @@ export class HtmlItem {
     }
   }
 
-  private addListener(el: ChildNode) {
+  private addListener(el: ChildNode): void {
     el.addEventListener('mouseover', this.addListenerFunction);
     el.addEventListener('mouseout', this.addListenerFunction);
   }
 
   private addListenerFunction: Listener = (e: Event): void => {
     (this.item.element as HTMLElement).classList.toggle('active');
-    const x = (this.item.element as HTMLElement).offsetLeft + 220;
-    const y = (this.item.element as HTMLElement).offsetTop + 15;
-    this.message?.show(`<${this.item.tag}`, x, y);
+    const x: number = (this.item.element as HTMLElement).offsetLeft + 220;
+    const y: number = (this.item.element as HTMLElement).offsetTop + 15;
+    if (e.type === 'mouseout') {
+      this.message?.hide();
+    } else {
+      this.message?.show(`${(this.element as HTMLElement).innerText}`, x, y);
+    }
     this.element.classList.toggle('active');
     e.stopPropagation();
   };

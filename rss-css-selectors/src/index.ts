@@ -70,7 +70,7 @@ class Main {
   }
 
   renderMain(): void {
-    const bodyContainer: HTMLDivElement = document.createElement('div');
+    const bodyContainer: HTMLElement = document.createElement('main');
     bodyContainer.className = 'body-container';
     const mainContainer: HTMLDivElement = document.createElement('div');
     mainContainer.className = 'main-container';
@@ -104,8 +104,7 @@ class Main {
     this.cssHtml.append(viewer.element);
     this.checkForm();
     this.message = new Message();
-    body.append(this.message.element);
-    // this.message.show('gkuyguioyg', 160, 465);
+    bodyContainer.append(this.message.element);
   }
 
   private checkForm(): void {
@@ -153,15 +152,14 @@ class Main {
   correctAnswer: () => void = (): void => {
     if (this.input) {
       this.input.value = '';
-      const answer = levelsConfig[this.level].answear[0];
-      answer.split('').forEach((el, i) => {
-        setTimeout(() => {
+      const answer: string[] = levelsConfig[this.level].answear[0].split('').filter((el: string) => el !== '\\' && el !== '?');
+      answer.forEach((el: string, i: number): void => {
+        setTimeout((): void => {
           if (this.input) {
             this.input.value += el;
           }
         }, i * 150);
       });
-      // this.input.value = levelsConfig[this.level].answear[0];
     }
   };
 
@@ -193,10 +191,8 @@ console.log(`
 -Рядом с элементом отображается его html-код
 -выводится уведомление о победе
 -Если пользователь ответил неправильно, отображается соответствующая анимация
--Клик по кнопке Help выводит нужный селектор в окне для ввода кода. Селектор выводится с эффектом печати текста (плавное появление текста по буквам) 
+-Клик по кнопке Help выводит нужный селектор в окне для ввода кода.
 -или уровень выполнен с использованием подсказки
--Внешний вид приложения 
--Минимальная ширина страницы, при которой проверяется корректность отображения приложения - 500рх
 -использование разных стилей для активного и неактивного состояния элемента, плавные анимации
 -используются Generics
 -дублирование кода сведено к минимуму, не используются магические числа, используются осмысленные имена переменных и функций, оптимальный размер функций и т.д.

@@ -13,15 +13,8 @@
   background: aliceblue;
 }
 
-#colorful::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border: 10px solid #e0539d;
-  border-radius: 50px;
+#colorful {
+  background: radial-gradient(#ffffff, #052b3b);
 }
 
 .bento {
@@ -35,6 +28,7 @@
 }
 
 .orange {
+  //position: relative;
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -62,14 +56,18 @@
 .bento,
 .orange,
 .apple {
-  transform: translateY(0);
+  //transform: translateY(0);
+  //position: relative;
+  bottom: 0;
   transition: ease-in-out 500ms;
   &.active {
     border: 5px solid yellow;
   }
 
   &.fly-away {
-    transform: translateY(-100vh);
+    position: relative;
+    //transform: translateY(-100vh);
+    bottom: 100vh;
   }
 }
 
