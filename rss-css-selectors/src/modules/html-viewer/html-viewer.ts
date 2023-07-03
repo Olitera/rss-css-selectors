@@ -13,7 +13,7 @@ export class Viewer {
   }
 
   renderHTMLViewer(): void {
-    const tableMain = this.element.querySelector('.viewer-main');
+    const tableMain: Element | null = this.element.querySelector('.viewer-main');
     const tableHTML: Numbers = new Numbers(16);
     this.tableCode = document.createElement('div');
     this.tableCode.className = 'table-code';

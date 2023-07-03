@@ -45,6 +45,24 @@
   text-align: center;
 }
 
+.win {
+  color: #FFEB3B;
+  animation: 1s ease-in-out win;
+}
+
+@keyframes win {
+  0%, 100% {
+    transform: rotateZ(0deg);
+  }
+  30% {
+    transform: rotateZ(3deg);
+  }
+  70% {
+    transform: rotateZ(-3deg);
+  }
+}
+
+
 @media (max-width: 880px) {
   .description {
     font-size: 23px;

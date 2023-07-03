@@ -28,7 +28,6 @@
 }
 
 .orange {
-  //position: relative;
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -56,8 +55,6 @@
 .bento,
 .orange,
 .apple {
-  //transform: translateY(0);
-  //position: relative;
   bottom: 0;
   transition: ease-in-out 500ms;
   &.active {
@@ -66,20 +63,19 @@
 
   &.fly-away {
     position: relative;
-    //transform: translateY(-100vh);
     bottom: 100vh;
   }
 }
 
 .right {
-  //animation: 1s infinite alternate sun-rise;
+  animation: 1s infinite alternate right;
 }
 
 .wrong {
-  transform: rotateZ(30deg);
+  animation: 1s ease-in-out wrong;
 }
 
-@keyframes sun-rise {
+@keyframes right {
   0%, 100% {
     transform: translate(0px, 0px) rotateZ(0deg);
   }
@@ -88,5 +84,17 @@
   }
   70% {
     transform: translate(5px, -5px) rotateZ(-5deg);
+  }
+}
+
+@keyframes wrong {
+  0%, 100% {
+    transform: rotateZ(0deg);
+  }
+  30% {
+    transform: rotateZ(3deg);
+  }
+  70% {
+    transform: rotateZ(-3deg);
   }
 }

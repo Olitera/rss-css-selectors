@@ -21,22 +21,22 @@ class Main {
   private cssHtml?: HTMLElement;
   private message?: Message;
   private reset?: Element | null;
+  private description?: HTMLDivElement | undefined;
 
   constructor() {
     this.renderMain();
     this.level = 0;
-    const dataFromLS = localStorage.getItem('gameConfig');
+    const dataFromLS: string | null = localStorage.getItem('gameConfig');
     if (dataFromLS && this.levels) {
       const data: { currentLevel: number; levelsConfig: LevelItem[] | undefined } = JSON.parse(dataFromLS);
       console.log(data);
-      this.levels.levelsArray.forEach((level, i) => {
+      this.levels.levelsArray.forEach((level: LevelItem, i: number): void => {
         if (data.levelsConfig && data.levelsConfig[i].isPassed) {
           console.log(level);
           level.setAsPassed();
         }
       });
       this.level = data.currentLevel;
-      // console.log(this.level, this.level);
     }
     this.startLevel(this.level);
   }
@@ -45,6 +45,7 @@ class Main {
     this.level = number;
     this.levels?.levelsArray[number].setAsCurrent();
     this.presentation.renderTable(number);
+    this.description = this.presentation.description;
     this.items = this.presentation.table?.itemsArray;
     const htmlItemsArray: HtmlItem[] | undefined = this.items?.map((element: Item) => {
       const htmlItemm: HtmlItem = new HtmlItem(element, this.message);
@@ -86,7 +87,7 @@ class Main {
     this.levels.levelsArray.forEach((level: LevelItem) =>
       level.element.addEventListener('click', (): void => {
         console.log(this.level);
-        this.levels?.levelsArray[this.level].setAsNotCurrent();
+        this.levels?.levelsArray[this.level]?.setAsNotCurrent();
         this.startLevel(level.levelNumber - 1);
       })
     );
@@ -131,8 +132,16 @@ class Main {
       }
     });
     setTimeout((): void => {
-      if (this.level === levelsConfig.length) {
-        alert('win');
+      if (this.levels?.levelsArray.every((el: LevelItem) => el.isPassed)) {
+        if (this.description) {
+          this.description.innerText = 'You are a winner!';
+          this.description.classList.add('win');
+        }
+      } else if (this.level === levelsConfig.length) {
+        if (this.description) {
+          this.description.innerText = 'Try again';
+          this.description.classList.add('win');
+        }
       } else {
         this.startLevel(this.level);
       }
@@ -146,6 +155,7 @@ class Main {
     e.preventDefault();
     if (this.cssHtml) {
       this.cssHtml.classList.add('wrong');
+      setTimeout(() => this.cssHtml?.classList.remove('wrong'), 1000);
     }
   };
 
@@ -175,7 +185,7 @@ class Main {
   private resetGame: () => void = (): void => {
     localStorage.removeItem('gameConfig');
     this.level = 0;
-    this.levels?.levelsArray.forEach((level) => {
+    this.levels?.levelsArray.forEach((level: LevelItem): void => {
       level.setAsNotCurrent();
       level.setNotPassed();
     });
@@ -185,16 +195,9 @@ class Main {
 
 new Main();
 
-console.log(`
--написать table в table-code
--исправить верные ответы через help
--Рядом с элементом отображается его html-код
--выводится уведомление о победе
--Если пользователь ответил неправильно, отображается соответствующая анимация
--Клик по кнопке Help выводит нужный селектор в окне для ввода кода.
--или уровень выполнен с использованием подсказки
--использование разных стилей для активного и неактивного состояния элемента, плавные анимации
--используются Generics
--дублирование кода сведено к минимуму, не используются магические числа, используются осмысленные имена переменных и функций, оптимальный размер функций и т.д.
--реализованы юнит-тесты, использующие различные методы jest – 2 балла за каждую покрытую функцию/метод, но не более 20 баллов (процент покрытия каждой функции/метода не учитывается)
-`);
+// console.log(`
+// -или уровень выполнен с использованием подсказки
+// -используются Generics
+// -дублирование кода сведено к минимуму, не используются магические числа, используются осмысленные имена переменных и функций, оптимальный размер функций и т.д.
+// -реализованы юнит-тесты, использующие различные методы jest – 2 балла за каждую покрытую функцию/метод, но не более 20 баллов (процент покрытия каждой функции/метода не учитывается)
+// `);

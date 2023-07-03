@@ -31,13 +31,13 @@ export class LevelItem {
     this.element.classList.remove('current');
   }
 
-  setNotPassed() {
+  setNotPassed(): void {
     this.isPassed = false;
     this.element.classList.remove('passed');
   }
 
   renderlevelNumber(): void {
-    const levelNumber = this.element.querySelector('.level-number');
+    const levelNumber: Element | null = this.element.querySelector('.level-number');
     if (levelNumber) {
       levelNumber.innerHTML = String(this.levelNumber);
     }
