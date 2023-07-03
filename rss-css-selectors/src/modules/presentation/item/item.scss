@@ -3,15 +3,14 @@
 }
 
 .plate {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   border-radius: 50px;
   background: aliceblue;
-  //position: relative;
 }
 
 #colorful::before {
@@ -26,8 +25,8 @@
 }
 
 .bento {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: center;

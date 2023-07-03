@@ -61,7 +61,7 @@
 
 .editor-but {
   height: 100%;
-  width: 15%;
+  width: 17%;
   border-radius: 7px;
   cursor: pointer;
 }
@@ -72,6 +72,14 @@
 
 .table-linea {
   background: #777070;
+}
+
+@media (max-width: 750px) {
+  .editor-but {
+    font-size: 11px;
+    padding: 0;
+  }
+
 }
 
 

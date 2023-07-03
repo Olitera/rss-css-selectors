@@ -28,3 +28,21 @@
   background-color: #a59b76;
   color: #302d2d;
 }
+
+@media (max-width: 800px) {
+  .level {
+    width: 97%;
+    height: 70px;
+    flex-direction: row;
+    column-gap: 15px;
+  }
+  .level-title {
+    margin-block-start: 5px;
+    font-size: 20px;
+    margin-left: 2px;
+  }
+  .level-but {
+    height: 40px;
+    margin-right: 2px;
+  }
+}

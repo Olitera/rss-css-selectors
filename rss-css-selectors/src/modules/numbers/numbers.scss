@@ -7,8 +7,14 @@
 
 .numbers-table-linea {
   width: 100%;
-  line-height: 1.7;
+  line-height: 1.58;
   border-right: 1px solid #b6abab;
   text-align: center;
   color: #FFFFFF;
+}
+
+@media (max-width: 800px) {
+  .numbers-table-linea {
+    line-height: 1.41;
+  }
 }

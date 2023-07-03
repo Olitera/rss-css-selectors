@@ -19,7 +19,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  column-gap: 51px;
+  column-gap: 7%;
 }
 
 .presentation-but {
@@ -42,4 +42,16 @@
   font-size: 27px;
   color: #b6abab;
   text-align: center;
+}
+
+@media (max-width: 880px) {
+  .description {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 600px) {
+  .description {
+    font-size: 20px;
+  }
 }

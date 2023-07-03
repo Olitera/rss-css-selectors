@@ -32,3 +32,15 @@ body {
   flex-direction: row;
 }
 
+@media (max-width: 800px) {
+  .body-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    row-gap: 2px;
+    column-gap: 0;
+  }
+  .main-container {
+    width: 97%;
+  }
+}
+
