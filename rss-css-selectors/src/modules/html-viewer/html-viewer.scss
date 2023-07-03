@@ -1,7 +1,5 @@
 .viewer {
   width: 50%;
-  //height: 100%;
-  //height: 700px;
   border: 2px solid #b6abab;
 }
 
@@ -22,7 +20,6 @@
 
 .viewer-main {
   width: 100%;
-  //height: 89%;
   display: flex;
   flex-direction: row;
   background: #201f1f;
@@ -37,7 +34,7 @@
 }
 
 .table-code div {
-  line-height: 1.7;
+  line-height: 1.58;
   cursor: pointer;
   div {
     padding-left: 20px;

@@ -162,15 +162,15 @@ export const levelsConfig: ILevelConfig[] = [
         child: {
           tag: 'apple',
           className: 'red',
+          right: 'right',
         },
-        right: 'right',
       },
       {
         tag: 'plate',
         child: {
           tag: 'orange',
+          right: 'right',
         },
-        right: 'right',
       },
       {
         tag: 'apple',
