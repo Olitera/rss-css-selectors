@@ -9,7 +9,7 @@ export class Editor {
   public form: HTMLFormElement | null;
 
   constructor() {
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
     this.form = this.element.querySelector('form');
     this.input = this.element.querySelector('.editor-selector');
     this.renderCssEditor();

@@ -8,7 +8,7 @@ export class Numbers {
   public color?: string;
 
   constructor(count: number, color?: string) {
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
     this.count = count;
     this.color = color;
     this.renderNumbers();

@@ -3,7 +3,7 @@ import el from './message.html';
 import { templateCreation } from '../../helper/template';
 
 export class Message {
-  public element: HTMLElement = templateCreation(el) as HTMLElement;
+  public element: HTMLElement = templateCreation<HTMLElement>(el);
 
   show(message: string, x: number, y: number): void {
     this.element.innerText = message;

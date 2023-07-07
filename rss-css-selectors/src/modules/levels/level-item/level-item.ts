@@ -9,7 +9,7 @@ export class LevelItem {
   private isCurrent?: boolean;
 
   constructor(levelNumber: number) {
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
     this.levelNumber = levelNumber;
     this.renderlevelNumber();
   }

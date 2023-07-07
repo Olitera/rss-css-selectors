@@ -12,7 +12,7 @@ export class Presentation {
   public help?: HTMLButtonElement;
 
   constructor() {
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
   }
 
   renderTable(level: number): void {

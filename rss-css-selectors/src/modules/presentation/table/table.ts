@@ -13,7 +13,7 @@ export class Table {
 
   constructor(level: number) {
     this.level = level;
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
     this.forceTable();
   }
 

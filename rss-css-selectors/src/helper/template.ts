@@ -1,5 +1,5 @@
-export function templateCreation(htmlFromString: string): ChildNode {
+export function templateCreation<Type>(htmlFromString: string): Type {
   const template: HTMLTemplateElement = document.createElement('template');
   template.innerHTML = htmlFromString;
-  return template.content.firstChild as ChildNode;
+  return template.content.firstChild as Type;
 }

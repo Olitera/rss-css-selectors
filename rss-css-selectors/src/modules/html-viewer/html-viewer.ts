@@ -8,7 +8,7 @@ export class Viewer {
   public tableCode!: HTMLDivElement;
 
   constructor() {
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
     this.renderHTMLViewer();
   }
 

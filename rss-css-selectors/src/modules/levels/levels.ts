@@ -10,7 +10,7 @@ export class Level {
   public reset: Element | null;
 
   constructor() {
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
     this.renderLevel();
     this.reset = this.element.querySelector('.level-but');
   }

@@ -13,7 +13,7 @@ export class HtmlItem {
   constructor(item: Item, message?: Message) {
     this.item = item;
     this.message = message;
-    this.element = templateCreation(el) as HTMLElement;
+    this.element = templateCreation<HTMLElement>(el);
     this.createTag();
     this.addListener(this.element);
     this.addListener(this.item.element);
